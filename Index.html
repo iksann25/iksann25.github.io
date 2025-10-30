@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daniel López | Data Engineer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Configuración de Tailwind para modo oscuro
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            accent: '#00bcd4',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-gray-900 text-gray-200 font-sans transition-colors duration-300">
+
+  <!-- HEADER -->
+  <header class="flex justify-between items-center px-6 py-4 border-b border-gray-700">
+    <h1 class="text-2xl font-bold text-accent">Daniel López</h1>
+    <button id="toggleDarkMode" class="text-gray-400 hover:text-accent transition">
+      🌙
+    </button>
+  </header>
+
+  <!-- HERO -->
+  <section class="text-center py-16 px-6">
+    <h2 class="text-3xl md:text-5xl font-bold mb-4">Data Engineer especializado en Machine Learning</h2>
+    <p class="max-w-2xl mx-auto text-gray-400 leading-relaxed">
+      Soy Daniel López, Data Engineer especializado en Machine Learning. Me apasiona el procesamiento de datos,
+      la automatización de pipelines y la creación de modelos predictivos eficientes. Mi objetivo es transformar
+      datos complejos en información útil que impulse decisiones inteligentes.
+    </p>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="px-6 py-12 bg-gray-950">
+    <h3 class="text-2xl font-semibold text-accent mb-6 text-center">Proyectos</h3>
+    <p class="text-center text-gray-400 mb-10">
+      Aquí iré subiendo mis proyectos de análisis de datos, machine learning y visualización.
+    </p>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+      <!-- EJEMPLO DE PROYECTO -->
+      <!--
+      <div class="bg-gray-800 rounded-2xl p-5 hover:scale-105 transition-transform">
+        <h4 class="text-xl font-semibold mb-2 text-accent">Análisis de COVID-19</h4>
+        <p class="text-gray-400 mb-3">Exploración de datos y visualización de la evolución de casos en Europa.</p>
+        <a href="#" class="text-sm text-accent hover:underline">Ver notebook →</a>
+      </div>
+      -->
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="px-6 py-16">
+    <h3 class="text-2xl font-semibold text-accent mb-6 text-center">Sobre mí</h3>
+    <p class="max-w-3xl mx-auto text-gray-400 leading-relaxed text-center">
+      Cuento con una sólida formación en ingeniería de datos y aprendizaje automático. Disfruto optimizando
+      pipelines de datos, desarrollando modelos escalables y visualizando resultados de manera clara. Mi trabajo
+      se centra en unir la ingeniería y la analítica para crear soluciones basadas en datos.
+    </p>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="px-6 py-16 bg-gray-950">
+    <h3 class="text-2xl font-semibold text-accent mb-6 text-center">Contacto</h3>
+    <div class="flex justify-center space-x-6 text-2xl text-gray-400">
+      <!-- Íconos con enlaces -->
+      <!-- Sustituye los # cuando tengas tus perfiles -->
+      <a href="#" class="hover:text-accent" title="GitHub"><i class="fab fa-github"></i></a>
+      <a href="#" class="hover:text-accent" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="mailto:tuemail@example.com" class="hover:text-accent" title="Email"><i class="fas fa-envelope"></i></a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="text-center py-6 border-t border-gray-700 text-gray-500 text-sm">
+    © 2025 Daniel López. Todos los derechos reservados.
+  </footer>
+
+  <!-- FontAwesome para iconos -->
+  <script src="https://kit.fontawesome.com/a2d9d6a54d.js" crossorigin="anonymous"></script>
+
+  <!-- Script para alternar modo oscuro -->
+  <script>
+    const toggleDarkMode = document.getElementById('toggleDarkMode');
+    const html = document.documentElement;
+
+    toggleDarkMode.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+
+    // Mantener preferencia al recargar
+    if (localStorage.getItem('theme') === 'light') {
+      html.classList.remove('dark');
+    }
+  </script>
+
+</body>
+</html>
