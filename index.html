@@ -3,104 +3,286 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Daniel López | Data Engineer</title>
+  <title>Daniel López | Data Engineer & Machine Learning</title>
+  
   <script src="https://cdn.tailwindcss.com"></script>
+  
   <script>
     tailwind.config = {
       darkMode: 'class',
       theme: {
         extend: {
           colors: {
-            accent: '#00bcd4',
+            'accent': {
+              DEFAULT: '#00bcd4', // Turquesa/Cyan principal
+              'light': '#80deea',
+              'dark': '#0097a7',
+            },
+            'primary-dark': '#0f172a', // Un azul noche más profundo para el fondo
+            'secondary-dark': '#1e293b', // Un gris-azulado para las tarjetas
           }
         }
       }
     }
   </script>
-</head>
-<body class="bg-gray-900 text-gray-200 font-sans transition-colors duration-300">
 
-  <!-- HEADER -->
-  <header class="flex justify-between items-center px-6 py-4 border-b border-gray-700">
-    <h1 class="text-2xl font-bold text-accent">Daniel López</h1>
-    <button id="toggleDarkMode" class="text-gray-400 hover:text-accent transition">🌙</button>
-  </header>
-
-  <!-- HERO / PRESENTACIÓN -->
-  <section class="text-center py-16 px-6">
-    <!-- FOTO REDONDA -->
-    <img src="assets/img/da.png" alt="Daniel López" class="w-40 h-40 mx-auto rounded-full border-4 border-accent mb-6">
-    <h2 class="text-3xl md:text-5xl font-bold mb-4">Data Engineer especializado en Machine Learning</h2>
-    <p class="max-w-2xl mx-auto text-gray-400 leading-relaxed">
-      Soy Daniel López, Data Engineer especializado en Machine Learning. Me apasiona el procesamiento de datos,
-      la automatización de pipelines y la creación de modelos predictivos eficientes. Mi objetivo es transformar
-      datos complejos en información útil que impulse decisiones inteligentes.
-    </p>
-  </section>
-
-  <!-- PROYECTOS -->
-  <section id="projects" class="px-6 py-12 bg-gray-950">
-    <h3 class="text-2xl font-semibold text-accent mb-6 text-center">Proyectos</h3>
-    <p class="text-center text-gray-400 mb-10">
-      Aquí iré subiendo mis proyectos de análisis de datos, machine learning y visualización.
-    </p>
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-      <!-- EJEMPLO DE CARD DE PROYECTO -->
-      <!--
-      <div class="bg-gray-800 rounded-2xl p-5 hover:scale-105 transition-transform">
-        <h4 class="text-xl font-semibold mb-2 text-accent">Nombre del proyecto</h4>
-        <p class="text-gray-400 mb-3">Breve descripción del proyecto.</p>
-        <a href="#" class="text-sm text-accent hover:underline">Ver notebook →</a>
-      </div>
-      -->
-    </div>
-  </section>
-
-  <!-- SOBRE MÍ -->
-  <section id="about" class="px-6 py-16">
-    <h3 class="text-2xl font-semibold text-accent mb-6 text-center">Sobre mí</h3>
-    <p class="max-w-3xl mx-auto text-gray-400 leading-relaxed text-center">
-      Cuento con una sólida formación en ingeniería de datos y aprendizaje automático. Disfruto optimizando
-      pipelines de datos, desarrollando modelos escalables y visualizando resultados de manera clara.
-      Mi trabajo se centra en unir la ingeniería y la analítica para crear soluciones basadas en datos.
-    </p>
-  </section>
-
-  <!-- CONTACTO -->
-  <section id="contact" class="px-6 py-16 bg-gray-950">
-    <h3 class="text-2xl font-semibold text-accent mb-6 text-center">Contacto</h3>
-    <div class="flex justify-center space-x-6 text-2xl text-gray-400">
-      <!-- Sustituye los # cuando tengas tus perfiles -->
-      <a href="#" class="hover:text-accent" title="GitHub"><i class="fab fa-github"></i></a>
-      <a href="#" class="hover:text-accent" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-      <a href="mailto:tuemail@example.com" class="hover:text-accent" title="Email"><i class="fas fa-envelope"></i></a>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="text-center py-6 border-t border-gray-700 text-gray-500 text-sm">
-    © 2025 Daniel López. Todos los derechos reservados.
-  </footer>
-
-  <!-- FontAwesome para iconos -->
   <script src="https://kit.fontawesome.com/a2d9d6a54d.js" crossorigin="anonymous"></script>
 
-  <!-- Toggle modo oscuro -->
+  <style>
+    /* Scroll suave */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Animación de entrada para elementos */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body class="bg-white dark:bg-primary-dark text-gray-800 dark:text-gray-200 font-sans transition-colors duration-300">
+
+  <header class="sticky top-0 z-50 flex justify-between items-center px-6 py-4 bg-white/80 dark:bg-primary-dark/80 backdrop-blur-sm border-b border-gray-200 dark:border-gray-700">
+    <a href="#" class="text-2xl font-bold text-accent-dark dark:text-accent">Daniel López</a>
+    <nav class="hidden md:flex items-center space-x-6">
+      <a href="#skills" class="text-gray-600 dark:text-gray-400 hover:text-accent dark:hover:text-accent transition">Habilidades</a>
+      <a href="#projects" class="text-gray-600 dark:text-gray-400 hover:text-accent dark:hover:text-accent transition">Proyectos</a>
+      <a href="#about" class="text-gray-600 dark:text-gray-400 hover:text-accent dark:hover:text-accent transition">Sobre mí</a>
+      <a href="#contact" class="text-gray-600 dark:text-gray-400 hover:text-accent dark:hover:text-accent transition">Contacto</a>
+    </nav>
+    <button id="toggleDarkMode" class="text-xl text-gray-500 dark:text-gray-400 hover:text-accent dark:hover:text-accent transition">
+      🌙
+    </button>
+  </header>
+
+  <main>
+    <section class="text-center min-h-[70vh] flex flex-col justify-center items-center py-20 px-6">
+      <img src="assets/img/da.png" alt="Daniel López" class="w-40 h-40 mx-auto rounded-full border-4 border-accent mb-6 shadow-lg fade-in">
+      <h2 class="text-4xl md:text-6xl font-bold mb-4 fade-in" style="transition-delay: 100ms;">Data Engineer</h2>
+      <h3 class="text-2xl md:text-4xl font-semibold text-accent mb-6 fade-in" style="transition-delay: 200ms;">Especializado en Machine Learning</h3>
+      <p class="max-w-2xl mx-auto text-gray-600 dark:text-gray-400 leading-relaxed mb-8 fade-in" style="transition-delay: 300ms;">
+        Apasionado por transformar datos complejos en soluciones de negocio. 
+        Creo pipelines de datos eficientes y modelos predictivos que impulsan decisiones inteligentes.
+      </p>
+      <div class="flex justify-center space-x-4 fade-in" style="transition-delay: 400ms;">
+        <a href="#projects" class="px-6 py-3 bg-accent hover:bg-accent-dark text-white font-semibold rounded-lg shadow-md transition-transform transform hover:scale-105">
+          Ver Proyectos
+        </a>
+        <a href="#contact" class="px-6 py-3 border-2 border-accent text-accent-dark dark:text-accent hover:bg-accent hover:text-white font-semibold rounded-lg shadow-md transition-all transform hover:scale-105">
+          Contactar
+        </a>
+      </div>
+    </section>
+
+    <section id="skills" class="px-6 py-16 bg-gray-50 dark:bg-secondary-dark">
+      <div class="max-w-6xl mx-auto">
+        <h3 class="text-3xl font-semibold text-accent mb-10 text-center fade-in">Mi Stack Tecnológico</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          <div class="fade-in" style="transition-delay: 100ms;">
+            <div class="flex items-center mb-3">
+              <i class="fas fa-database text-2xl text-accent mr-3"></i>
+              <h4 class="text-xl font-semibold">Data Engineering</h4>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="bg-accent/10 text-accent-dark dark:text-accent-light px-3 py-1 rounded-full text-sm font-medium">Python</span>
+              <span class="bg-accent/10 text-accent-dark dark:text-accent-light px-3 py-1 rounded-full text-sm font-medium">SQL</span>
+              <span class="bg-accent/10 text-accent-dark dark:text-accent-light px-3 py-1 rounded-full text-sm font-medium">Apache Spark</span>
+              <span class="bg-accent/10 text-accent-dark dark:text-accent-light px-3 py-1 rounded-full text-sm font-medium">Airflow</span>
+              <span class="bg-accent/10 text-accent-dark dark:text-accent-light px-3 py-1 rounded-full text-sm font-medium">Docker</span>
+              <span class="bg-accent/10 text-accent-dark dark:text-accent-light px-3 py-1 rounded-full text-sm font-medium">AWS</span>
+            </div>
+          </div>
+
+          <div class="fade-in" style="transition-delay: 200ms;">
+            <div class="flex items-center mb-3">
+              <i class="fas fa-brain text-2xl text-accent mr-3"></i>
+              <h4 class="text-xl font-semibold">Machine Learning</h4>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="bg-accent/10 text-accent-dark dark:text-accent-light px-3 py-1 rounded-full text-sm font-medium">Scikit-learn</span>
+              <span class="bg-accent/10 text-accent-dark dark:text-accent-light px-3 py-1 rounded-full text-sm font-medium">Pandas</span>
+              <span class="bg-accent/10 text-accent-dark dark:text-accent-light px-3 py-1 rounded-full text-sm font-medium">NumPy</span>
+              <span class="bg-accent/10 text-accent-dark dark:text-accent-light px-3 py-1 rounded-full text-sm font-medium">TensorFlow</span>
+              <span class="bg-accent/10 text-accent-dark dark:text-accent-light px-3 py-1 rounded-full text-sm font-medium">PyTorch</span>
+            </div>
+          </div>
+
+          <div class="fade-in" style="transition-delay: 300ms;">
+            <div class="flex items-center mb-3">
+              <i class="fas fa-chart-bar text-2xl text-accent mr-3"></i>
+              <h4 class="text-xl font-semibold">Visualización y BBDD</h4>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="bg-accent/10 text-accent-dark dark:text-accent-light px-3 py-1 rounded-full text-sm font-medium">Matplotlib</span>
+              <span class="bg-accent/10 text-accent-dark dark:text-accent-light px-3 py-1 rounded-full text-sm font-medium">Seaborn</span>
+              <span class="bg-accent/10 text-accent-dark dark:text-accent-light px-3 py-1 rounded-full text-sm font-medium">Tableau</span>
+              <span class="bg-accent/10 text-accent-dark dark:text-accent-light px-3 py-1 rounded-full text-sm font-medium">PostgreSQL</span>
+              <span class="bg-accent/10 text-accent-dark dark:text-accent-light px-3 py-1 rounded-full text-sm font-medium">BigQuery</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="px-6 py-16 bg-white dark:bg-primary-dark">
+      <h3 class="text-3xl font-semibold text-accent mb-10 text-center fade-in">Proyectos Destacados</h3>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        
+        <div class="bg-gray-50 dark:bg-secondary-dark rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-[1.02] fade-in">
+          <img src="https://via.placeholder.com/400x250/00bcd4/ffffff?text=Imagen+Proyecto" alt="Nombre del proyecto" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h4 class="text-xl font-semibold mb-2 text-accent-dark dark:text-accent">Sistema de Recomendación de Películas</h4>
+            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">
+              Análisis exploratorio (EDA) y creación de un modelo de recomendación (filtrado colaborativo) usando la base de datos de MovieLens.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded-full text-xs font-medium">Python</span>
+              <span class="bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded-full text-xs font-medium">Pandas</span>
+              <span class="bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded-full text-xs font-medium">Scikit-learn</span>
+            </div>
+            <div class="flex justify-between items-center pt-4 border-t border-gray-200 dark:border-gray-700">
+              <a href="#" class="text-sm text-accent hover:underline flex items-center">
+                <i class="fab fa-github mr-2"></i> Ver Código
+              </a>
+              <a href="#" class="text-sm text-gray-500 hover:text-accent flex items-center">
+                Ver Demo <i class="fas fa-external-link-alt ml-2"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-gray-50 dark:bg-secondary-dark rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-[1.02] fade-in">
+          <img src="https://via.placeholder.com/400x250/0097a7/ffffff?text=Imagen+Proyecto" alt="Nombre del proyecto" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h4 class="text-xl font-semibold mb-2 text-accent-dark dark:text-accent">Pipeline de Datos de Twitter</h4>
+            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">
+              Creación de un pipeline ETL con Airflow para ingestar, procesar y almacenar tweets en BigQuery para su posterior análisis de sentimiento.
+            </p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded-full text-xs font-medium">Airflow</span>
+              <span class="bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded-full text-xs font-medium">Google BigQuery</span>
+              <span class="bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded-full text-xs font-medium">Docker</span>
+            </div>
+            <div class="flex justify-between items-center pt-4 border-t border-gray-200 dark:border-gray-700">
+              <a href="#" class="text-sm text-accent hover:underline flex items-center">
+                <i class="fab fa-github mr-2"></i> Ver Código
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-gray-50 dark:bg-secondary-dark rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-[1.02] fade-in flex items-center justify-center min-h-[300px]">
+          <div class="p-6 text-center">
+            <i class="fas fa-cogs text-4xl text-gray-400 dark:text-gray-600 mb-4"></i>
+            <h4 class="text-xl font-semibold mb-2 text-gray-600 dark:text-gray-400">Nuevo Proyecto</h4>
+            <p class="text-gray-500 dark:text-gray-500 text-sm">
+              Próximamente...
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="about" class="px-6 py-20 bg-gray-50 dark:bg-secondary-dark">
+      <div class="max-w-3xl mx-auto text-center fade-in">
+        <h3 class="text-3xl font-semibold text-accent mb-6">Sobre mí</h3>
+        <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
+          Cuento con una sólida formación en ingeniería de datos y aprendizaje automático. Disfruto optimizando
+          pipelines de datos, desarrollando modelos escalables y visualizando resultados de manera clara.
+        </p>
+        <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+          Mi trabajo se centra en unir la ingeniería y la analítica para crear soluciones basadas en datos que
+          no solo funcionen, sino que también aporten un valor real y medible.
+        </p>
+      </div>
+    </section>
+
+    <section id="contact" class="px-6 py-20 bg-white dark:bg-primary-dark">
+      <div class="max-w-xl mx-auto text-center fade-in">
+        <h3 class="text-3xl font-semibold text-accent mb-4">¡Hablemos!</h3>
+        <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-8">
+          Estoy abierto a nuevas oportunidades y colaboraciones. 
+          No dudes en contactarme a través de mis redes o por correo electrónico.
+        </p>
+        <div class="flex justify-center space-x-8 text-4xl text-gray-500 dark:text-gray-400">
+          <a href="#" class="hover:text-accent dark:hover:text-accent transition transform hover:scale-125" title="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="#" class="hover:text-accent dark:hover:text-accent transition transform hover:scale-125" title="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="mailto:tuemail@example.com" class="hover:text-accent dark:hover:text-accent transition transform hover:scale-125" title="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="text-center py-6 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-secondary-dark">
+    <p class="text-gray-500 dark:text-gray-500 text-sm">
+      © 2025 Daniel López. Todos los derechos reservados.
+    </p>
+  </footer>
+
   <script>
     const toggleDarkMode = document.getElementById('toggleDarkMode');
     const html = document.documentElement;
 
-    toggleDarkMode.addEventListener('click', () => {
-      html.classList.toggle('dark');
-      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
-    });
+    // Función para actualizar el icono
+    function updateIcon() {
+      if (html.classList.contains('dark')) {
+        toggleDarkMode.innerHTML = '☀️'; // Sol
+        localStorage.setItem('theme', 'dark');
+      } else {
+        toggleDarkMode.innerHTML = '🌙'; // Luna
+        localStorage.setItem('theme', 'light');
+      }
+    }
 
-    // Mantener preferencia al recargar
-    if (localStorage.getItem('theme') === 'light') {
+    // Cargar preferencia al inicio
+    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      html.classList.add('dark');
+    } else {
       html.classList.remove('dark');
     }
+    updateIcon(); // Poner el icono correcto al cargar
+
+    // Event listener para el botón
+    toggleDarkMode.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      updateIcon(); // Actualizar icono al hacer click
+    });
+
+    // --- Script para animar al hacer scroll ---
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          }
+        });
+      }, {
+        threshold: 0.1 // El elemento se anima cuando el 10% es visible
+      });
+
+      // Observar todos los elementos con la clase .fade-in
+      document.querySelectorAll('.fade-in').forEach(el => {
+        observer.observe(el);
+      });
+    });
   </script>
 
 </body>
 </html>
-
